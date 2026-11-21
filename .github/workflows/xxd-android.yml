@@ -22,14 +22,13 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      # XXD-VPN: put my modified files in place and apply my settings (GitHub Variables)
       - name: Apply XXD-VPN overlay
         env:
-          XXD_DOMAIN: xxd-android.yml{{ vars.XXD_DOMAIN }}
+          XXD_DOMAIN: ${{ vars.XXD_DOMAIN }}
           XXD_CLIENT_PATH: ${{ vars.XXD_CLIENT_PATH }}
-          XXD_WHATSAPP_CHANNEL: ${{ vars.https://chat.whatsapp.com/HXHxnSSs2db9NyZh3gftcf?s=cl&p=a&mlu=4&ilr=4&iam=2 }}
+          XXD_WHATSAPP_CHANNEL: ${{ vars.XXD_WHATSAPP_CHANNEL }}
           XXD_TELEGRAM_CHANNEL: ${{ vars.XXD_TELEGRAM_CHANNEL }}
-          XXD_ADMIN_WHATSAPP: ${{ vars.237653264428 }}
+          XXD_ADMIN_WHATSAPP: ${{ vars.XXD_ADMIN_WHATSAPP }}
           XXD_GITHUB_REPO: ${{ github.repository }}
         run: |
           unzip -oq xxd-overlay.zip -d /tmp/xxd
@@ -73,8 +72,6 @@ jobs:
           make android-apk-install-deps
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
 
-      # Optional signing. Without the 4 secrets the APK is signed with the debug key
-      # (it installs fine, but you cannot publish updates on the same key later).
       - name: Signing keys (optional)
         env:
           KEY_B64: ${{ secrets.ANDROID_SIGNING_KEY }}
@@ -104,7 +101,6 @@ jobs:
           name: XXD-VPN-release
           path: out/XXD-VPN-release.apk
 
-      # Push a tag like v1.0.1 to publish a GitHub Release (the in-app updater reads these).
       - name: Create release
         if: startsWith(github.ref, 'refs/tags/v')
         env:
@@ -112,4 +108,3 @@ jobs:
         run: |
           gh release create "${{ github.ref_name }}" out/XXD-VPN-release.apk \
             --title "XXD-VPN ${{ github.ref_name }}" --notes "XXD-VPN ${{ github.ref_name }}"
-            
