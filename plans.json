@@ -1,0 +1,8 @@
+{
+  "plans": [
+    { "name": "Forfait 1 mois", "name_en": "1-month plan", "price": "2000 FCFA", "days": 30, "gb": "100 Go" },
+    { "name": "Forfait 3 mois", "name_en": "3-month plan", "price": "5000 FCFA", "days": 90, "gb": "300 Go" }
+  ],
+  "payment": "Paiement : Orange Money 6XXXXXXXX / MTN MoMo 6XXXXXXXX. Envoyez la preuve sur WhatsApp.",
+  "payment_en": "Payment: Orange Money 6XXXXXXXX / MTN MoMo 6XXXXXXXX. Send the proof on WhatsApp."
+}

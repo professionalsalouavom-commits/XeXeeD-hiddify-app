@@ -1,0 +1,19 @@
+XXD-VPN - ALL IN ONE
+First: unzip THIS big zip on your PC. Do NOT unzip the small xxd-overlay.zip inside it.
+
+GITHUB (details with every click: page 6 of 4_GUIDE_PDF/XXD-VPN-Guide.pdf)
+ 1. github.com -> sign up -> open github.com/hiddify/hiddify-app -> Fork -> Create fork.
+ 2. In YOUR copy: Settings > Secrets and variables > Actions > Variables: add
+      XXD_CLIENT_PATH, XXD_DOMAIN, XXD_WHATSAPP_CHANNEL, XXD_TELEGRAM_CHANNEL, XXD_ADMIN_WHATSAPP
+ 3. Code > Add file > Upload files: drag the 3 files of folder 1_UPLOAD_TO_GITHUB
+      (xxd-overlay.zip, plans.json, announcement.json) -> Commit changes.
+ 4. Code > Add file > Create new file: name  .github/workflows/xxd-android.yml
+      paste the content of 2_WORKFLOW_FILE/xxd-android.yml -> Commit.
+ 5. Actions > enable workflows > disable the other workflows > XXD-VPN Android APK > Run workflow.
+ 6. After 15-40 min: open the run > Artifacts > XXD-VPN-release > XXD-VPN-release.apk.
+
+TOKEN = the user's UUID copied from your Hiddify panel (the customer pastes it in the app; XXDVPN-<UUID> also works).
+You never delete or move any old file. The build puts the new files in place by itself.
+plans.json / announcement.json: edit them (Notepad) BEFORE uploading: your plans, payment numbers.
+3_TOKEN_TOOL_PC: for later, when your Hiddify panel exists (README inside).
+Build error? Copy the last 30 lines of the red step and send them to Claude.
